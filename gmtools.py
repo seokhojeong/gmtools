@@ -26,7 +26,6 @@ def butter_bandpass(lowcut, highcut, fs, order=4):
     return b, a
     #return z, p, k
 
-
 def butter_bandpass_filter(data, lowcut, highcut, fs, order=4):
     # This can be unstable
     b, a = butter_bandpass(lowcut, highcut, fs, order=order)
@@ -84,6 +83,12 @@ def CumArias(acc, dt):
 
     return Ia
 
+def ricker(f0, t0, time):
+# Generate a ricker wavelet with the central frequency 'f0'
+# position at time 't0'
+# time is the time vector
+     w=(1-2*(np.pi*f0*(time-t0))**2)*np.exp(-(np.pi*f0*(time-t0))**2);
+     return w
 
 #def husid(acc, dt):
 
