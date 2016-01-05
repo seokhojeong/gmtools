@@ -1,0 +1,1 @@
+Search.setIndex({envversion:42,terms:{index:0,search:0,bullet:0,parent:0,some:0,nest:0,list:0,number:0,here:0,continu:0,content:0,item:0,second:0,subitem:0,two:0,thi:0,too:0,further:0,line:0,modul:0,page:0},objtypes:{},objnames:{},filenames:["index"],titles:["Welcome to gmtools&#8217;s documentation!"],objects:{},titleterms:{gmtool:0,document:0,welcom:0,indic:0,tabl:0}})
