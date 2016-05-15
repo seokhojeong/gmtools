@@ -17,6 +17,29 @@ def read_nga(filename): # Read nga format strong motion data and return time and
     
     return dt, acc
 
+def write_nga(filename, dt, acc): # Write nga format strong motion data
+    outfile = open(filename, 'w')
+    
+    n_in = acc.size
+    n_lines = int(np.ceil(n_in/5.0))
+    
+    header = 'Acceleration in m/s/s\n' + \
+            'Time step: ' + str(dt) + '\n' + \
+            'Number of datapoints: ' + str(n_in) + \
+            ' Number of lines: ' + str(n_lines) + '\n'
+    outfile.write(header)
+    for ind in np.arange(n_lines):
+        if ind == n_lines-1:
+            buffer_acc = ' '.join('%1.6e' %e for e in acc[ind*5:])
+        else:
+            buffer_acc = ' '.join('%1.6e' %e for e in acc[ind*5:ind*5+5]) + '\n'
+
+        outfile.write(buffer_acc)
+    outfile.close()
+
+    return
+
+
 def butter_bandpass(lowcut, highcut, fs, order=4):
     nyq = 0.5 * fs
     low = lowcut / nyq
