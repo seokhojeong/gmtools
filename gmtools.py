@@ -17,6 +17,19 @@ def read_nga(filename): # Read nga format strong motion data and return time and
     
     return dt, acc
 
+def read_acc_generic(filename, skip_header): # Read generic multi column ground motion data 
+    infile = open(filename, 'r')
+    lines = infile.readlines()
+    infile.close()
+    header = lines[0:skip_header]
+    data = lines[skip_header:]
+    acc = ()
+    for line in data:
+        acc=np.append(acc, np.array(line.split(), dtype=float))
+    
+    return acc
+
+
 def write_nga(filename, dt, acc): # Write nga format strong motion data
     outfile = open(filename, 'w')
     
