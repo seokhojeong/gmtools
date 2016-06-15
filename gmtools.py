@@ -1,5 +1,5 @@
 import numpy as np
-from scipy.signal import butter, lfilter
+from scipy.signal import butter, lfilter, sosfilt
 #import matplotlib.pyplot as plt
 
 def read_nga(filename): # Read nga format strong motion data and return time and acceleration
