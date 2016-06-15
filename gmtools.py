@@ -21,16 +21,20 @@ def butter_bandpass(lowcut, highcut, fs, order=4):
     nyq = 0.5 * fs
     low = lowcut / nyq
     high = highcut / nyq
-    b, a = butter(order, [low, high], btype='band')
-    #z, p, k = butter(order, [low, high], btype='band', output='zpk')
-    return b, a
+    #b, a = butter(order, [low, high], btype='band')
+    sos = butter(order, [low, high], btype='band', output='zpk')
+    #return b, a
+    return sos
     #return z, p, k
 
 def butter_bandpass_filter(data, lowcut, highcut, fs, order=4):
     # This can be unstable
-    b, a = butter_bandpass(lowcut, highcut, fs, order=order)
-    y = lfilter(b, a, data)
+    #b, a = butter_bandpass(lowcut, highcut, fs, order=order)
+    # SOS filter to avoid numerical precision related issues 
+    sos = butter_bandpass(lowcut, highcut, fs, order=order)
+    #y = lfilter(b, a, data)
     #y = filtfilt(b, a, data)
+    y = sosfilt(sos, data)
     return y
 
 def Response_Spectra(acc, dt, xi, period):
