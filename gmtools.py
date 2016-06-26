@@ -22,7 +22,7 @@ def butter_bandpass(lowcut, highcut, fs, order=4):
     low = lowcut / nyq
     high = highcut / nyq
     #b, a = butter(order, [low, high], btype='band')
-    sos = butter(order, [low, high], btype='band', output='zpk')
+    sos = butter(order, [low, high], btype='band', output='sos')
     #return b, a
     return sos
     #return z, p, k
