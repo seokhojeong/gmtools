@@ -9,6 +9,6 @@ from Cython.Build import cythonize
 import numpy
 
 setup(
-    ext_modules = cythonize("gmtools_c.pyx"),
+    ext_modules = cythonize("RSpectra.pyx"),
     include_dirs = [numpy.get_include()]
 )
